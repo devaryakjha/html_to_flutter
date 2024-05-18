@@ -1,5 +1,5 @@
 name: html_to_flutter
-description: "A new Flutter package project."
+description: "A Flutter package to convert HTML to Flutter widgets."
 version: 0.0.1+1-pre
 repository: https://github.com/devaryakjha/html_to_flutter
 issues: https://github.com/devaryakjha/html_to_flutter/issues
