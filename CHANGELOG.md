@@ -1,4 +1,4 @@
-## 0.0.1-pre
+## 0.0.1+1-pre
 
 * New: `Html` widget.
 * New: `HtmlConfig` class to configure text-styles and onClick behaviour for anchor tags

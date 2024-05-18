@@ -1,7 +1,8 @@
 name: html_to_flutter
 description: "A new Flutter package project."
 version: 0.0.1+1-pre
-homepage:
+repository: https://github.com/devaryakjha/html_to_flutter
+issues: https://github.com/devaryakjha/html_to_flutter/issues
 
 environment:
   sdk: '>=3.4.0 <4.0.0'
