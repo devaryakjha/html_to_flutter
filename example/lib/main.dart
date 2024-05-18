@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:simple_html_to_flutter/simple_html_to_flutter.dart';
 
@@ -26,9 +28,15 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Html(
+          config: HtmlConfig(
+            onAnchorClick: (href) {
+              log('Opening URL: $href');
+              // Open the URL in a browser.
+            },
+          ),
           data: r'''
 <p>This is a paragraph.</p>
 <br/>

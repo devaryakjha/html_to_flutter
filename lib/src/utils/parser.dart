@@ -48,6 +48,8 @@ final class HtmlParser {
                 ? (TapGestureRecognizer()
                   ..onTap = () {
                     log('Opening URL: ${node.parent?.attributes['href']}');
+                    config.onAnchorClick
+                        ?.call(node.parent?.attributes['href'] ?? '');
                     // Open the URL in a browser.
                   })
                 : null,

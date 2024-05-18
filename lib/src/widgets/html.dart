@@ -1,22 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:simple_html_to_flutter/src/utils/html_config.dart';
 import 'package:simple_html_to_flutter/src/utils/parser.dart';
 
+/// {@template html}
+/// A widget to display HTML content.
+/// {@endtemplate}
 class Html extends StatefulWidget {
-  const Html({required this.data, super.key});
+  /// {@macro html}
+  const Html({
+    required this.data,
+    super.key,
+    this.config = const HtmlConfig.defaults(),
+  });
 
+  /// The HTML data to display.
   final String data;
+
+  /// The configuration for the HTML widget.
+  final HtmlConfig config;
 
   @override
   State<Html> createState() => _HtmlState();
 }
 
 class _HtmlState extends State<Html> {
-  late final HtmlParser _parser;
+  late HtmlParser _parser;
 
   @override
   void initState() {
     super.initState();
-    _parser = HtmlParser(data: widget.data);
+    _parser = HtmlParser(data: widget.data, config: widget.config);
+  }
+
+  @override
+  void didUpdateWidget(covariant Html oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.data != widget.data || oldWidget.config != widget.config) {
+      _parser = HtmlParser(data: widget.data, config: widget.config);
+      setState(() {});
+    }
   }
 
   @override
