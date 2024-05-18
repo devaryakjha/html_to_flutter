@@ -45,8 +45,9 @@ final class HtmlParser {
             recognizer: isAnchor
                 ? (TapGestureRecognizer()
                   ..onTap = () {
-                    config.onAnchorClick
-                        ?.call(node.parent?.attributes['href'] ?? '');
+                    config.onAnchorClick?.call(
+                      Uri.parse(node.parent?.attributes['href'] ?? ''),
+                    );
                   })
                 : null,
           ),

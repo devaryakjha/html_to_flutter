@@ -1,2 +1,2 @@
 /// Callback for when an anchor is clicked.
-typedef OnAnchorClick = void Function(String href);
+typedef OnAnchorClick = void Function(Uri href);
