@@ -91,6 +91,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.15.4"
+  html_to_flutter:
+    dependency: "direct main"
+    description:
+      path: ".."
+      relative: true
+    source: path
+    version: "0.0.1"
   leak_tracker:
     dependency: transitive
     description:
@@ -155,13 +162,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.0"
-  simple_html_to_flutter:
-    dependency: "direct main"
-    description:
-      path: ".."
-      relative: true
-    source: path
-    version: "0.0.1"
   sky_engine:
     dependency: transitive
     description: flutter

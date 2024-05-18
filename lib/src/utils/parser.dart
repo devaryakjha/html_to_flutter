@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' as parser;
-import 'package:simple_html_to_flutter/src/utils/html_config.dart';
+import 'package:html_to_flutter/html_to_flutter.dart';
 
 /// {@template parser}
 /// A utility class to parse HTML content.

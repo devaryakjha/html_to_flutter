@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simple_html_to_flutter/src/utils/html_config.dart';
-import 'package:simple_html_to_flutter/src/utils/parser.dart';
+import 'package:html_to_flutter/html_to_flutter.dart';
 
 /// {@template html}
 /// A widget to display HTML content.
@@ -43,8 +42,6 @@ class _HtmlState extends State<Html> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Text.rich(_parser.parse()),
-    );
+    return Text.rich(_parser.parse());
   }
 }

@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:simple_html_to_flutter/simple_html_to_flutter.dart';
+import 'package:html_to_flutter/html_to_flutter.dart';
 
 void main() {
   runApp(const MyApp());

@@ -5,19 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "simple_html_to_flutter",
+            "name": "html_to_flutter",
             "request": "launch",
             "type": "dart",
             "program": "example/lib/main.dart",
         },
         {
-            "name": "simple_html_to_flutter (profile mode)",
+            "name": "html_to_flutter (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "simple_html_to_flutter (release mode)",
+            "name": "html_to_flutter (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
