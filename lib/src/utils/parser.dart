@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:html/dom.dart' as dom;
@@ -47,10 +45,8 @@ final class HtmlParser {
             recognizer: isAnchor
                 ? (TapGestureRecognizer()
                   ..onTap = () {
-                    log('Opening URL: ${node.parent?.attributes['href']}');
                     config.onAnchorClick
                         ?.call(node.parent?.attributes['href'] ?? '');
-                    // Open the URL in a browser.
                   })
                 : null,
           ),

@@ -39,14 +39,10 @@ class MyHomePage extends StatelessWidget {
           ),
           data: r'''
 <p>This is a paragraph.</p>
-<br/>
 <p>This is a paragraph with <strong>bold</strong> text.</p>
-<br/>
 <p>This is a paragraph with <em>italic</em> text.</p>
-<br/>
 <p>This is a paragraph with <a href="https://example.com">a link</a>, <strong>bold</strong> text, and <a href="https://example.com">another link</a>.</p>
-<br/>
-<p>This is a paragraph with an image.<br/><br/><img src="https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg?20240301091138" alt="An image" style="width=200,height=200" />.</p>
+<p>This is a paragraph with an image.<br/><img src="https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg?20240301091138" alt="An image" style="width=200,height=200" />.</p>
 ''',
         ),
       ),

@@ -20,6 +20,7 @@ final class HtmlConfig {
   /// The map of text styles for each tag.
   final HtmlStyles styles;
 
+  /// The callback for when an anchor is clicked.
   final OnAnchorClick? onAnchorClick;
 
   /// Returns the [TextStyle] for the given tag.
