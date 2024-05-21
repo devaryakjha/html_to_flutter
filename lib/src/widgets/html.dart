@@ -6,17 +6,24 @@ import 'package:html_to_flutter/html_to_flutter.dart';
 /// {@endtemplate}
 class Html extends StatefulWidget {
   /// {@macro html}
-  const Html({
+  Html({
     required this.data,
     super.key,
-    this.config = const HtmlConfig.defaults(),
-  });
+    this.defaultStyle,
+    HtmlConfig? config,
+  }) : config = config ??
+            (defaultStyle == null
+                ? const HtmlConfig.defaults()
+                : HtmlConfig(defaultStyle: defaultStyle));
 
   /// The HTML data to display.
   final String data;
 
   /// The configuration for the HTML widget.
   final HtmlConfig config;
+
+  /// The default text style.
+  final TextStyle? defaultStyle;
 
   @override
   State<Html> createState() => _HtmlState();
@@ -42,6 +49,11 @@ class _HtmlState extends State<Html> {
 
   @override
   Widget build(BuildContext context) {
-    return Text.rich(_parser.parse());
+    return Material(
+      child: DefaultTextStyle(
+        style: widget.defaultStyle ?? (const DefaultTextStyle.fallback().style),
+        child: Text.rich(_parser.parse()),
+      ),
+    );
   }
 }
