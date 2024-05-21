@@ -50,6 +50,7 @@ class _HtmlState extends State<Html> {
   @override
   Widget build(BuildContext context) {
     return Material(
+      type: MaterialType.transparency,
       child: DefaultTextStyle(
         style: widget.defaultStyle ?? (const DefaultTextStyle.fallback().style),
         child: Text.rich(_parser.parse()),
