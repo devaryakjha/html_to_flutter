@@ -1,3 +1,7 @@
+## 0.0.3-pre
+
+- Update: updated `HtmlConfig` to support default text style
+
 ## 0.0.2+1-pre
 
 - New: escape input for better parsing
