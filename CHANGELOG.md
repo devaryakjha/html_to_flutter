@@ -1,3 +1,11 @@
+## 0.0.5-pre
+
+- delete: removed unused `csslib` package
+
+## 0.0.4-pre
+
+- refactor: Update `Html` widget to support default text style
+
 ## 0.0.3-pre
 
 - Update: updated `HtmlConfig` to support default text style
