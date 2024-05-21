@@ -25,6 +25,27 @@ final class HtmlStyles {
     this.customTagToStyle = const <String, TextStyle>{},
   });
 
+  /// The default text styles for each HTML tag.
+  factory HtmlStyles.fromDefaultTextStyle(TextStyle style) {
+    return HtmlStyles(
+      p: style,
+      b: style.copyWith(fontWeight: FontWeight.bold),
+      i: style.copyWith(fontStyle: FontStyle.italic),
+      u: style.copyWith(decoration: TextDecoration.underline),
+      a: style.copyWith(
+        color: Colors.blue,
+        decoration: TextDecoration.underline,
+        decorationColor: Colors.blue,
+      ),
+      h1: style.copyWith(fontWeight: FontWeight.bold),
+      h2: style.copyWith(fontWeight: FontWeight.bold),
+      h3: style.copyWith(fontWeight: FontWeight.bold),
+      h4: style.copyWith(fontWeight: FontWeight.bold),
+      h5: style.copyWith(fontWeight: FontWeight.bold),
+      h6: style.copyWith(fontWeight: FontWeight.bold),
+    );
+  }
+
   /// The text style for the `<p>` tag.
   final TextStyle p;
 
