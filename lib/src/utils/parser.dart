@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' as parser;
 import 'package:html_to_flutter/html_to_flutter.dart';
+import 'package:html_to_flutter/src/utils/unescape_string.dart';
 
 /// {@template parser}
 /// A utility class to parse HTML content.
 /// {@endtemplate}
 final class HtmlParser {
   /// {@macro parser}
-  const HtmlParser({
-    required this.data,
+  HtmlParser({
     this.config = const HtmlConfig.defaults(),
   });
 
   /// The HTML data to parse.
-  final String data;
+  late final String data;
 
   /// The configuration for the HTML widget.
   final HtmlConfig config;
@@ -81,5 +81,10 @@ final class HtmlParser {
       'br' => const TextSpan(text: '\n'),
       _ => TextSpan(children: children),
     };
+  }
+
+  /// Prepares the HTML data for parsing.
+  void prepare(String input) {
+    data = unescape(input);
   }
 }

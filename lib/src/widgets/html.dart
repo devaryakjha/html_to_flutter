@@ -28,14 +28,14 @@ class _HtmlState extends State<Html> {
   @override
   void initState() {
     super.initState();
-    _parser = HtmlParser(data: widget.data, config: widget.config);
+    _parser = HtmlParser(config: widget.config)..prepare(widget.data);
   }
 
   @override
   void didUpdateWidget(covariant Html oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.data != widget.data || oldWidget.config != widget.config) {
-      _parser = HtmlParser(data: widget.data, config: widget.config);
+      _parser = HtmlParser(config: widget.config)..prepare(widget.data);
       setState(() {});
     }
   }
