@@ -11,6 +11,7 @@ class Html extends StatefulWidget {
     super.key,
     this.defaultStyle,
     HtmlConfig? config,
+    this.color,
   }) : config = config ??
             (defaultStyle == null
                 ? const HtmlConfig.defaults()
@@ -24,6 +25,9 @@ class Html extends StatefulWidget {
 
   /// The default text style.
   final TextStyle? defaultStyle;
+
+  /// The color of the text.
+  final Color? color;
 
   @override
   State<Html> createState() => _HtmlState();
@@ -41,7 +45,10 @@ class _HtmlState extends State<Html> {
   @override
   void didUpdateWidget(covariant Html oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.data != widget.data || oldWidget.config != widget.config) {
+    if (oldWidget.data != widget.data ||
+        oldWidget.config != widget.config ||
+        oldWidget.defaultStyle != widget.defaultStyle ||
+        oldWidget.color != widget.color) {
       _parser = HtmlParser(config: widget.config)..prepare(widget.data);
       setState(() {});
     }
@@ -52,7 +59,11 @@ class _HtmlState extends State<Html> {
     return Material(
       type: MaterialType.transparency,
       child: DefaultTextStyle(
-        style: widget.defaultStyle ?? (const DefaultTextStyle.fallback().style),
+        style:
+            (widget.defaultStyle ?? (const DefaultTextStyle.fallback().style))
+                .apply(
+          color: widget.color,
+        ),
         child: Text.rich(_parser.parse()),
       ),
     );
