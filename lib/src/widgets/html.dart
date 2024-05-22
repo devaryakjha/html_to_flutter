@@ -27,6 +27,7 @@ class Html extends StatefulWidget {
     this.textWidthBasis,
     this.textHeightBehavior,
     this.selectionColor,
+    this.avoidEscaping = false,
   }) : config = config ??
             (defaultStyle == null
                 ? const HtmlConfig.defaults()
@@ -138,6 +139,9 @@ class Html extends StatefulWidget {
   /// (semi-transparent grey).
   final Color? selectionColor;
 
+  /// Whether to avoid escaping HTML entities.
+  final bool avoidEscaping;
+
   @override
   State<Html> createState() => _HtmlState();
 }
@@ -148,7 +152,11 @@ class _HtmlState extends State<Html> {
   @override
   void initState() {
     super.initState();
-    _parser = HtmlParser(config: widget.config)..prepare(widget.data);
+    _parser = HtmlParser(config: widget.config)
+      ..prepare(
+        widget.data,
+        avoidEscaping: widget.avoidEscaping,
+      );
   }
 
   @override
@@ -157,10 +165,27 @@ class _HtmlState extends State<Html> {
     if (oldWidget.data != widget.data ||
         oldWidget.config != widget.config ||
         oldWidget.defaultStyle != widget.defaultStyle ||
-        oldWidget.color != widget.color) {
-      _parser = HtmlParser(config: widget.config)..prepare(widget.data);
+        oldWidget.color != widget.color ||
+        widget.avoidEscaping != oldWidget.avoidEscaping) {
+      _parser = HtmlParser(config: widget.config)
+        ..prepare(
+          widget.data,
+          avoidEscaping: widget.avoidEscaping,
+        );
       setState(() {});
     }
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    properties.add(
+      StringProperty(
+        'data',
+        widget.data,
+        style: DiagnosticsTreeStyle.transition,
+      ),
+    );
+    super.debugFillProperties(properties);
   }
 
   @override
