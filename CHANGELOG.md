@@ -1,5 +1,9 @@
 ## 0.0.6-pre
 
+- refactor: Update `Html` widget to support additional text styling options
+
+## 0.0.6-pre
+
 - update: minor ui updates to support textstyle overrides
 
 ## 0.0.5-pre
