@@ -11,6 +11,7 @@ final class HtmlConfig {
     HtmlStyles? styles,
     this.defaultStyle,
     this.onAnchorClick,
+    this.onImageClick,
   }) : styles = styles ??
             (defaultStyle == null
                 ? const HtmlStyles()
@@ -20,6 +21,7 @@ final class HtmlConfig {
   const HtmlConfig.defaults()
       : styles = const HtmlStyles(),
         defaultStyle = null,
+        onImageClick = null,
         onAnchorClick = null;
 
   /// The map of text styles for each tag.
@@ -27,6 +29,9 @@ final class HtmlConfig {
 
   /// The callback for when an anchor is clicked.
   final OnAnchorClick? onAnchorClick;
+
+  /// The callback for when an image is clicked.
+  final OnImageClick? onImageClick;
 
   /// The default text style.
   /// If provided, this style will be applied to all text.

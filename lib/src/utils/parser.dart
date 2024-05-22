@@ -118,15 +118,24 @@ final class HtmlParser {
     final children = _parseNodes(element.nodes);
     return switch (element.localName) {
       'img' => WidgetSpan(
-          child: Image.network(
-            element.attributes['src']!,
-            semanticLabel: element.attributes['alt'] ?? '',
-            width: element.attributes['width'] != null
-                ? double.tryParse(element.attributes['width'] ?? '')
-                : null,
-            height: element.attributes['height'] != null
-                ? double.tryParse(element.attributes['height'] ?? '')
-                : null,
+          child: GestureDetector(
+            onTap: () {
+              config.onImageClick?.call(element.attributes['src'] ?? '');
+            },
+            child: Hero(
+              tag: element.attributes['src']!,
+              transitionOnUserGestures: true,
+              child: Image.network(
+                element.attributes['src']!,
+                semanticLabel: element.attributes['alt'] ?? '',
+                width: element.attributes['width'] != null
+                    ? double.tryParse(element.attributes['width'] ?? '')
+                    : null,
+                height: element.attributes['height'] != null
+                    ? double.tryParse(element.attributes['height'] ?? '')
+                    : null,
+              ),
+            ),
           ),
         ),
       _ => TextSpan(

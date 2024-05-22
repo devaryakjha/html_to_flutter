@@ -38,11 +38,7 @@ class MyHomePage extends StatelessWidget {
             },
           ),
           data: r'''
-<p>This is a paragraph.</p>
-<p>This is a paragraph with <strong>bold</strong> text.</p>
-<p>This is a paragraph with <em>italic</em> text.</p>
-<p>This is a paragraph with <a href="https://example.com">a link</a>, <strong>bold</strong> text, and <a href="https://example.com">another link</a>.</p>
-<p>This is a paragraph with an image.<br/><img src="https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg?20240301091138" alt="An image" style="width=200,height=200" />.</p>
+<p>Before we address the above question, let us understand what would happen if one chooses not to invest. Assume you earn Rs.50,000/- per month, and you spend Rs.30,000/-towards your day-to-day living; this can include expenses like housing, food, transport, shopping, medical, etc. The balance of Rs.20,000/- is your monthly surplus.</p><p> </p><p>For the sake of simplicity, let us ignore the tax effect in this discussion.</p><p> </p><p>To drive the point across, let us make a few simple assumptions –</p>\r\n<ol>\r\n\t<li>The employer is kind enough to give you a 10% salary hike every year.</li>\r\n\t<li>The cost of living is likely to go up by 8% yearly.</li>\r\n\t<li>You are 30 years old and plan to retire at 50, this translates to 20 working years.</li>\r\n\t<li>You don’t intend to work after you retire.</li>\r\n\t<li>Your expenses are fixed, and you don’t foresee any other expenses.</li>\r\n\t<li>The balance cash of Rs.20,000/- per month is retained as hard cash.</li>\r\n</ol>
 ''',
         ),
       ),
