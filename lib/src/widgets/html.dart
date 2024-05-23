@@ -192,7 +192,8 @@ class _HtmlState extends State<Html> {
   Widget build(BuildContext context) {
     return Material(
       type: MaterialType.transparency,
-      child: DefaultTextStyle(
+      child: AnimatedDefaultTextStyle(
+        duration: const Duration(milliseconds: 300),
         style:
             (widget.defaultStyle ?? (const DefaultTextStyle.fallback().style))
                 .apply(
