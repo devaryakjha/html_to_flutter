@@ -90,9 +90,17 @@ final class HtmlParser {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(liPrefix),
+            Text(
+              liPrefix,
+              textScaler: TextScaler.noScaling,
+            ),
             const SizedBox(width: 8),
-            Expanded(child: Text(_parseText(node.text, 'li', index, nodes))),
+            Expanded(
+              child: Text(
+                _parseText(node.text, 'li', index, nodes),
+                textScaler: TextScaler.noScaling,
+              ),
+            ),
           ],
         ),
       ),

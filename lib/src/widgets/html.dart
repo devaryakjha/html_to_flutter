@@ -215,6 +215,7 @@ class _HtmlState extends State<Html> {
           strutStyle: widget.strutStyle,
           textHeightBehavior: widget.textHeightBehavior,
           selectionColor: widget.selectionColor,
+          textScaler: TextScaler.noScaling,
         ),
       ),
     );
