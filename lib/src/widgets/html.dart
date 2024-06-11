@@ -21,7 +21,7 @@ class Html extends StatefulWidget {
     this.locale,
     this.softWrap,
     this.overflow,
-    this.textScaler,
+    this.textScaler = TextScaler.noScaling,
     this.maxLines,
     this.semanticsLabel,
     this.textWidthBasis,
@@ -89,7 +89,7 @@ class Html extends StatefulWidget {
   final TextOverflow? overflow;
 
   /// {@macro flutter.painting.textPainter.textScaler}
-  final TextScaler? textScaler;
+  final TextScaler textScaler;
 
   /// An optional maximum number of lines for the text to span,
   /// wrapping if necessary.
@@ -215,7 +215,7 @@ class _HtmlState extends State<Html> {
           strutStyle: widget.strutStyle,
           textHeightBehavior: widget.textHeightBehavior,
           selectionColor: widget.selectionColor,
-          textScaler: TextScaler.noScaling,
+          textScaler: widget.textScaler,
         ),
       ),
     );
