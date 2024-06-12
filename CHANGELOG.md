@@ -1,4 +1,8 @@
-## 0.0.6-pre
+## 0.0.8-pre
+
+- wip
+
+## 0.0.7-pre
 
 - refactor: Update `Html` widget to support additional text styling options
 
