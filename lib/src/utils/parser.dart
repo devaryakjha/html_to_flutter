@@ -130,19 +130,28 @@ final class HtmlParser {
             onTap: () {
               config.onImageClick?.call(element.attributes['src'] ?? '');
             },
-            child: Hero(
-              tag: element.attributes['src']!,
-              transitionOnUserGestures: true,
-              child: Image.network(
-                element.attributes['src']!,
-                semanticLabel: element.attributes['alt'] ?? '',
-                width: element.attributes['width'] != null
-                    ? double.tryParse(element.attributes['width'] ?? '')
-                    : null,
-                height: element.attributes['height'] != null
-                    ? double.tryParse(element.attributes['height'] ?? '')
-                    : null,
-              ),
+            child: Builder(
+              builder: (context) {
+                Size? size = Size(
+                  double.tryParse(element.attributes['width'] ?? '') ?? 0,
+                  double.tryParse(element.attributes['height'] ?? '') ?? 0,
+                );
+                if (size == Size.zero) {
+                  size = null;
+                }
+                return config.builders?.image
+                        ?.call(element.attributes['src']!, size: size) ??
+                    Image.network(
+                      element.attributes['src']!,
+                      semanticLabel: element.attributes['alt'] ?? '',
+                      width: element.attributes['width'] != null
+                          ? double.tryParse(element.attributes['width'] ?? '')
+                          : null,
+                      height: element.attributes['height'] != null
+                          ? double.tryParse(element.attributes['height'] ?? '')
+                          : null,
+                    );
+              },
             ),
           ),
         ),
