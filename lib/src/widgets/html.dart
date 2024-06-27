@@ -221,7 +221,7 @@ class _HtmlState extends State<Html> {
         child: parsed == null
             ? const SizedBox.shrink()
             : Text.rich(
-                parsed!,
+                _parser.parse(),
                 textAlign: widget.textAlign,
                 textDirection: widget.textDirection,
                 locale: widget.locale,
