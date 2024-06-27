@@ -9,11 +9,11 @@ import 'package:html_to_flutter/html_to_flutter.dart';
 /// {@endtemplate}
 class Html extends StatefulWidget {
   /// {@macro html}
-  Html({
+  const Html({
     required this.data,
     super.key,
     this.defaultStyle,
-    HtmlConfig? config,
+    this.config,
     this.color,
     this.strutStyle,
     this.textAlign,
@@ -28,16 +28,14 @@ class Html extends StatefulWidget {
     this.textHeightBehavior,
     this.selectionColor,
     this.avoidEscaping = false,
-  }) : config = config ??
-            (defaultStyle == null
-                ? const HtmlConfig.defaults()
-                : HtmlConfig(defaultStyle: defaultStyle));
+    this.fontMultiplier,
+  });
 
   /// The HTML data to display.
   final String data;
 
   /// The configuration for the HTML widget.
-  final HtmlConfig config;
+  final HtmlConfig? config;
 
   /// The default text style.
   final TextStyle? defaultStyle;
@@ -142,21 +140,35 @@ class Html extends StatefulWidget {
   /// Whether to avoid escaping HTML entities.
   final bool avoidEscaping;
 
+  /// The font size multiplier for the text.
+  final double? fontMultiplier;
+
   @override
   State<Html> createState() => _HtmlState();
 }
 
 class _HtmlState extends State<Html> {
   late HtmlParser _parser;
+  InlineSpan? parsed;
+
+  HtmlConfig _getConfig() {
+    final currConfig = (widget.config ?? const HtmlConfig.defaults())
+        .copyWith(defaultStyle: widget.defaultStyle);
+    return HtmlConfig.maybeOf(context)?.merge(currConfig) ?? currConfig;
+  }
 
   @override
   void initState() {
     super.initState();
-    _parser = HtmlParser(config: widget.config)
-      ..prepare(
-        widget.data,
-        avoidEscaping: widget.avoidEscaping,
-      );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _parser = HtmlParser(config: _getConfig())
+        ..prepare(
+          widget.data,
+          avoidEscaping: widget.avoidEscaping,
+        );
+      parsed = _parser.parse();
+      setState(() {});
+    });
   }
 
   @override
@@ -167,11 +179,12 @@ class _HtmlState extends State<Html> {
         oldWidget.defaultStyle != widget.defaultStyle ||
         oldWidget.color != widget.color ||
         widget.avoidEscaping != oldWidget.avoidEscaping) {
-      _parser = HtmlParser(config: widget.config)
+      _parser = HtmlParser(config: _getConfig())
         ..prepare(
           widget.data,
           avoidEscaping: widget.avoidEscaping,
         );
+      parsed = _parser.parse();
       setState(() {});
     }
   }
@@ -190,33 +203,37 @@ class _HtmlState extends State<Html> {
 
   @override
   Widget build(BuildContext context) {
+    final config = _getConfig();
+    final style =
+        config.defaultStyle ?? (const DefaultTextStyle.fallback().style);
     return Material(
       type: MaterialType.transparency,
       child: AnimatedDefaultTextStyle(
         duration: const Duration(milliseconds: 300),
-        style:
-            (widget.defaultStyle ?? (const DefaultTextStyle.fallback().style))
-                .apply(
+        style: style.apply(
           color: widget.color,
+          fontSizeFactor: widget.fontMultiplier ?? 1.0,
         ),
         maxLines: widget.maxLines,
         overflow: widget.overflow ?? TextOverflow.clip,
         textAlign: widget.textAlign ?? TextAlign.start,
         softWrap: widget.softWrap ?? true,
-        child: Text.rich(
-          _parser.parse(),
-          textAlign: widget.textAlign,
-          textDirection: widget.textDirection,
-          locale: widget.locale,
-          softWrap: widget.softWrap,
-          overflow: widget.overflow,
-          textWidthBasis: widget.textWidthBasis,
-          maxLines: widget.maxLines,
-          strutStyle: widget.strutStyle,
-          textHeightBehavior: widget.textHeightBehavior,
-          selectionColor: widget.selectionColor,
-          textScaler: widget.textScaler,
-        ),
+        child: parsed == null
+            ? const SizedBox.shrink()
+            : Text.rich(
+                parsed!,
+                textAlign: widget.textAlign,
+                textDirection: widget.textDirection,
+                locale: widget.locale,
+                softWrap: widget.softWrap,
+                overflow: widget.overflow,
+                textWidthBasis: widget.textWidthBasis,
+                maxLines: widget.maxLines,
+                strutStyle: widget.strutStyle,
+                textHeightBehavior: widget.textHeightBehavior,
+                selectionColor: widget.selectionColor,
+                textScaler: widget.textScaler,
+              ),
       ),
     );
   }

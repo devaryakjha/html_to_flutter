@@ -103,4 +103,25 @@ final class HtmlStyles {
       _ => const TextStyle(),
     };
   }
+
+  /// Merges this [HtmlStyles] with another.
+  HtmlStyles merge(HtmlStyles other) {
+    return HtmlStyles(
+      p: p.merge(other.p),
+      b: b.merge(other.b),
+      i: i.merge(other.i),
+      u: u.merge(other.u),
+      a: a.merge(other.a),
+      h1: h1.merge(other.h1),
+      h2: h2.merge(other.h2),
+      h3: h3.merge(other.h3),
+      h4: h4.merge(other.h4),
+      h5: h5.merge(other.h5),
+      h6: h6.merge(other.h6),
+      customTagToStyle: {
+        ...customTagToStyle,
+        ...other.customTagToStyle,
+      },
+    );
+  }
 }
