@@ -80,13 +80,19 @@ final class HtmlParser {
     final liParent = node.parent!;
     final listType = liParent.parent?.localName;
     final isOrdered = listType == 'ol';
+    final actualLiIndex = (liParent.parent?.nodes
+            .where((node) => node.text?.trim().isNotEmpty ?? false)
+            .toList()
+            .indexOf(liParent) ??
+        0);
     final liPrefix = isOrdered
         // ignore: lines_longer_than_80_chars
-        ? '${(liParent.parent?.nodes.where((node) => node.text?.trim().isNotEmpty ?? false).toList().indexOf(liParent) ?? 0) + 1}.'
+        ? '${actualLiIndex + 1}.'
         : '•';
     return WidgetSpan(
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 8, left: 16),
+        padding: EdgeInsets.only(
+            bottom: 8, left: 16, top: actualLiIndex == 0 ? 8 : 0.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -114,7 +120,7 @@ final class HtmlParser {
     List<dom.Node> nodes,
   ) {
     return switch (localName) {
-      'p' when index == (nodes.length - 1) => '$text\n',
+      'p' when index == (nodes.length - 1) && text.contains('\n') => '$text\n',
       'li' => text,
       'br' => '\n',
       _ => text,
