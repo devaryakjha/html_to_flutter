@@ -1,3 +1,3 @@
-## 0.0.1-dev.1
+## 0.2.1-dev.1
 
-- Initial release
+- Re-release with new mechanism
