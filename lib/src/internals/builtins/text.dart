@@ -52,9 +52,10 @@ final class TextExtension extends HtmlExtension {
     return ParsedResult(
       builder: (context) {
         final spans = e.nodes
-            .map(
-              (node) => _createSpanForNodeRecurssively(node, config, context),
-            )
+            .map((node) {
+              if (node.text?.trim().isEmpty ?? false) return null;
+              return _createSpanForNodeRecurssively(node, config, context);
+            })
             .whereNotNull()
             .toList();
 
