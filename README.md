@@ -69,6 +69,6 @@ Take the following code as an example
   }
 ```
 
-It will render as following
+It will render ui as following
 
-<img  src="https://raw.githubusercontent.com/devaryakjha/html_to_flutter/main/screenshots/readme_example.png" />
+<img src="https://raw.githubusercontent.com/devaryakjha/html_to_flutter/main/screenshots/readme_example.png" width="250" />
