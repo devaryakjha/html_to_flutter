@@ -67,4 +67,4 @@ Then run `flutter pub get` to install the package.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/devaryakjha/html_to_flutter_kit/blob/master/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/devaryakjha/html_to_flutter/tree/main/packages/html_to_flutter_kit/LICENSE) file for details.
