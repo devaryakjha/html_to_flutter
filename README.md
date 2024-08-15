@@ -71,4 +71,4 @@ Take the following code as an example
 
 It will render as following
 
-<img  src="https://raw.githubusercontent.com/devaryakjha/html_to_flutter/master/screenshots/readme_example.png" />
+<img  src="https://raw.githubusercontent.com/devaryakjha/html_to_flutter/main/screenshots/readme_example.png" />
