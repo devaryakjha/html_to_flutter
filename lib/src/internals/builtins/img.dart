@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:html_to_flutter/html_to_flutter.dart';
 
@@ -28,7 +29,6 @@ final class ImageExtension extends HtmlExtension {
   ) {
     return Image.network(
       src,
-      alignment: style?.alignment ?? Alignment.center,
       errorBuilder: (context, error, stackTrace) {
         if (alt == null || alt.isEmpty) {
           return SizedBox(
@@ -64,11 +64,18 @@ final class ImageExtension extends HtmlExtension {
           );
         }).toList();
         final deviceWidth = MediaQuery.sizeOf(context).width;
-        final closestSrcToWidth = srces.reduce((a, b) {
-          final aDiff = (a.width - deviceWidth).abs();
-          final bDiff = (b.width - deviceWidth).abs();
-          return aDiff < bDiff ? a : b;
-        });
+        final closestSrcToWidth = srces.firstWhereOrNull(
+              (src) {
+                // Find the first image that is larger than the device width
+                // and smaller than twice the device width.
+                return deviceWidth < src.width && src.width < (deviceWidth * 2);
+              },
+            ) ??
+            srces.reduce((a, b) {
+              final aDiff = (a.width - deviceWidth).abs();
+              final bDiff = (b.width - deviceWidth).abs();
+              return aDiff < bDiff ? a : b;
+            });
         return closestSrcToWidth.src;
       } catch (e) {
         return element.attributes['src']!;
