@@ -1,3 +1,7 @@
+# 0.2.3-dev.2
+
+- Added preview link
+
 # 0.2.3-dev.1
 
 - Added interactive example for web

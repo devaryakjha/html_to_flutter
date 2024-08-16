@@ -5,6 +5,10 @@
 
 `html_to_flutter` is a Flutter package that converts raw HTML strings into Flutter widgets. It supports various HTML tags and can be extended with additional packages for complex tags like tables and iframes.
 
+## Live Preview
+
+You can see a live preview of the `html_to_flutter` package in action at [https://www.aryak.dev/flutter/html_to_flutter](https://www.aryak.dev/flutter/html_to_flutter). This demo showcases the capabilities of the package and its extensions.
+
 ## Features
 
 - Convert HTML elements to Flutter widgets.
