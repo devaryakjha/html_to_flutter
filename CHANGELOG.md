@@ -1,3 +1,11 @@
+# 0.2.3-dev.1
+
+- Added interactive example for web
+- Added `CssColorParser` for converting css colors to Material colors
+- Improved extracting styles from attributes
+- Fixed margin and padding attributes not working for `ol` and `ul` elements
+- Fixed app crashing on web
+
 # 0.2.2-dev.6
 
 - Updated `Readme.md`
