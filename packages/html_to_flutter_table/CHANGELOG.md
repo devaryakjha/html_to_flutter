@@ -1,3 +1,7 @@
+## 0.0.1-dev.5
+
+- Added minimal example
+
 ## 0.0.1-dev.4
 
 - Added short description for the package in `Readme.md`
