@@ -11,6 +11,9 @@ import 'package:html_to_flutter/html_to_flutter.dart';
 ///
 /// This extension uses the `flutter_inappwebview` package to render iframes.
 final class IframeExtextion extends HtmlExtension {
+  /// Creates a new instance of [IframeExtextion].
+  const IframeExtextion();
+
   @override
   ParsedResult? parseNode(Node node, HtmlConfig config) {
     final src = node.attributes['src'];
