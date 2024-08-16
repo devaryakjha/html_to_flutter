@@ -1,3 +1,8 @@
+## 0.0.2-dev.5
+
+- Updated all dependencies to latest versions
+- Added topics
+
 ## 0.0.2-dev.4
 
 - Updated all dependencies to latest versions

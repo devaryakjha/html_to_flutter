@@ -1,3 +1,8 @@
+## 0.0.1-dev.7
+
+- Updated `html_to_flutter` to latest version
+- Added topics
+
 ## 0.0.1-dev.6
 
 - Updated `html_to_flutter` to latest version
