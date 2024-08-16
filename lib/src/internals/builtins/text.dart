@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
 import 'package:html_to_flutter/html_to_flutter.dart';
 
@@ -49,6 +50,7 @@ final class TextExtension extends HtmlExtension {
   ParsedResult? _fromElement(HTMLElement e, HtmlConfig config) {
     final style =
         Style.fromElement(e, config).merge(config.styleOverrides[e.localName]);
+
     return ParsedResult(
       builder: (context) {
         final spans = e.nodes
@@ -73,20 +75,26 @@ final class TextExtension extends HtmlExtension {
   InlineSpan? _createSpanForNodeRecurssively(
     Node node,
     HtmlConfig config,
-    BuildContext context,
-  ) {
+    BuildContext context, [
+    GestureRecognizer? recognizer,
+  ]) {
     if (!isNodeSupported(node)) {
       final result = ParsedResult.fromNode(node, config);
       if (result == null) return null;
       final widget = result(context, config);
       return WidgetSpan(
-        child: widget,
+        child: recognizer is TapGestureRecognizer
+            ? GestureDetector(
+                onTap: recognizer.onTap,
+                child: widget,
+              )
+            : widget,
         style: result.style.textStyle,
       );
     }
 
     if (node is HTMLText) {
-      return TextSpan(text: node.text);
+      return TextSpan(text: node.text, recognizer: recognizer);
     }
 
     if (node is HTMLElement) {
@@ -101,9 +109,29 @@ final class TextExtension extends HtmlExtension {
     HtmlConfig config,
     BuildContext context,
   ) {
+    GestureRecognizer? recognizer;
     if (e.localName == 'br') return const TextSpan(text: '\n');
+    if (e.localName == 'a' && e.attributes['href'] != null) {
+      recognizer = TapGestureRecognizer()
+        ..onTap = () {
+          config.onTap?.call(
+            e.attributes['href'],
+            {...e.attributes},
+            e,
+          );
+        };
+    }
     final children = e.nodes
-        .map((node) => _createSpanForNodeRecurssively(node, config, context))
+        .map(
+          (node) {
+            return _createSpanForNodeRecurssively(
+              node,
+              config,
+              context,
+              recognizer,
+            );
+          },
+        )
         .whereNotNull()
         .toList();
     final style =
@@ -111,6 +139,7 @@ final class TextExtension extends HtmlExtension {
     return TextSpan(
       children: children,
       style: style.textStyle,
+      recognizer: children.isEmpty ? recognizer : null,
     );
   }
 
