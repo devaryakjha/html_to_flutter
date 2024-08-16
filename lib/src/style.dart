@@ -94,7 +94,7 @@ final class Style {
   /// - `color_name`
   static Color? _parseCssColor(String? input) {
     if (input == null) return null;
-    return const CssColorParser().parse(input);
+    return CssColorParser(input).parse();
   }
 
   static double? _parseDouble(String? input) {
