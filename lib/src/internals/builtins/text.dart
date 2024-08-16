@@ -53,7 +53,12 @@ final class TextExtension extends HtmlExtension {
       builder: (context) {
         final spans = e.nodes
             .map((node) {
-              if (node.text?.trim().isEmpty ?? false) return null;
+              final isEmpty = node.text?.trim().isEmpty ?? false;
+              if (isEmpty) {
+                if (node is HTMLText) {
+                  return null;
+                }
+              }
               return _createSpanForNodeRecurssively(node, config, context);
             })
             .whereNotNull()
@@ -77,8 +82,9 @@ final class TextExtension extends HtmlExtension {
     if (!isNodeSupported(node)) {
       final result = ParsedResult.fromNode(node, config);
       if (result == null) return null;
+      final widget = result(context, config);
       return WidgetSpan(
-        child: result(context, config),
+        child: widget,
         style: result.style.textStyle,
       );
     }
