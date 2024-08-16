@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:html_to_flutter/html_to_flutter.dart';
 
@@ -12,7 +13,7 @@ final class ListExtension extends HtmlExtension {
     final tag = node.localName;
     final isOrdered = tag == 'ol';
     final style =
-        config.styleOverrides[tag]?.merge(Style.fromElement(node, config));
+        Style.fromElement(node, config).merge(config.styleOverrides[tag]);
     return ParsedResult(
       builder: (context) {
         if (isOrdered) {
@@ -21,6 +22,7 @@ final class ListExtension extends HtmlExtension {
         return _UnorderedList(style: style, node: node, config: config);
       },
       source: node,
+      style: style,
     );
   }
 
@@ -48,8 +50,10 @@ class _UnorderedList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = node.nodes.whereType<HTMLElement>().toList();
-    final parsedItems =
-        items.map((e) => ParsedResult.fromNode(e, config)).toList();
+    final parsedItems = items
+        .map((e) => ParsedResult.fromNode(e, config))
+        .whereNotNull()
+        .toList();
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -57,11 +61,11 @@ class _UnorderedList extends StatelessWidget {
       itemCount: parsedItems.length,
       itemBuilder: (context, index) {
         final parsed = parsedItems[index];
-        final child = parsed?.call(context, config) ?? const SizedBox.shrink();
+        final child = parsed.call(context, config);
         return Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildPrefix(parsed?.style.textStyle),
+            _buildPrefix(parsed.style.textStyle),
             Expanded(child: child),
           ],
         );
@@ -90,8 +94,10 @@ class _OrderedList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = node.nodes.whereType<HTMLElement>().toList();
-    final parsedItems =
-        items.map((e) => ParsedResult.fromNode(e, config)).toList();
+    final parsedItems = items
+        .map((e) => ParsedResult.fromNode(e, config))
+        .whereNotNull()
+        .toList();
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -99,11 +105,12 @@ class _OrderedList extends StatelessWidget {
       itemCount: parsedItems.length,
       itemBuilder: (context, index) {
         final parsed = parsedItems[index];
-        final child = parsed?.call(context, config) ?? const SizedBox.shrink();
+        final child = parsed.call(context, config);
+
         return Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildPrefix(index, parsed?.style.textStyle),
+            _buildPrefix(index, parsed.style.textStyle),
             Expanded(child: child),
           ],
         );
