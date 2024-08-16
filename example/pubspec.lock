@@ -161,11 +161,12 @@ packages:
     source: hosted
     version: "0.15.4"
   html_to_flutter:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: ".."
-      relative: true
-    source: path
+      name: html_to_flutter
+      sha256: f9472f9729333cf1243493d35c5e99a324a1086efece782b1213079de89fd777
+      url: "https://pub.dev"
+    source: hosted
     version: "0.2.3-dev.1"
   html_to_flutter_iframe:
     dependency: transitive
