@@ -50,7 +50,11 @@ final class TextExtension extends HtmlExtension {
   ParsedResult? _fromElement(HTMLElement e, HtmlConfig config) {
     final style =
         Style.fromElement(e, config).merge(config.styleOverrides[e.localName]);
-
+    final spansEmpty = e.nodes.every((node) {
+      final isEmpty = node.text?.trim().isEmpty ?? false;
+      return isEmpty && node is HTMLText;
+    });
+    if (spansEmpty) return null;
     return ParsedResult(
       builder: (context) {
         final spans = e.nodes
@@ -61,7 +65,10 @@ final class TextExtension extends HtmlExtension {
             })
             .whereNotNull()
             .toList();
-
+        final combined = TextSpan(children: spans);
+        if (combined.toPlainText().trim().isEmpty) {
+          return const SizedBox.shrink();
+        }
         return Text.rich(
           TextSpan(children: spans),
           style: style.textStyle,
