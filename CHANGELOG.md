@@ -1,5 +1,6 @@
 ## 0.2.2-dev.1
 
+- Added support for `<a>` tag
 - Fix few text rendering issues
 - Added better exampple
 
