@@ -1,3 +1,7 @@
+## 0.0.2-dev.3
+
+- Updated `html_to_flutter_iframe` to latest version
+
 ## 0.0.2-dev.2
 
 - Fixed `html_to_flutter_iframe` was not exported
