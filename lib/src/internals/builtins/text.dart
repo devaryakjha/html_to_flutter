@@ -54,11 +54,7 @@ final class TextExtension extends HtmlExtension {
         final spans = e.nodes
             .map((node) {
               final isEmpty = node.text?.trim().isEmpty ?? false;
-              if (isEmpty) {
-                if (node is HTMLText) {
-                  return null;
-                }
-              }
+              if (isEmpty && node is HTMLText) return null;
               return _createSpanForNodeRecurssively(node, config, context);
             })
             .whereNotNull()
