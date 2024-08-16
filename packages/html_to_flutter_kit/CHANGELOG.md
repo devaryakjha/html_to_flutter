@@ -1,3 +1,7 @@
+## 0.0.1-dev.3
+
+- Added minimal example
+
 ## 0.0.1-dev.2
 
 - Updated `Readme.md`
