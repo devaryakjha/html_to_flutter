@@ -166,47 +166,31 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.2.2-dev.6"
+    version: "0.2.3-dev.1"
   html_to_flutter_iframe:
     dependency: transitive
     description:
       name: html_to_flutter_iframe
-      sha256: "8b53b074360daa250bb13f36a4d8c599134d354b36a293483f80ea13bcee55f8"
+      sha256: beb0378b8cd87be6eff23ccd192101c015db20baa63645d8f030fb7f217b5ff3
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.1-dev.4"
+    version: "0.0.2-dev.1"
   html_to_flutter_kit:
     dependency: "direct main"
     description:
       name: html_to_flutter_kit
-      sha256: c95b7709251409b558239a1a1b14fed536dc7e7766133d310f698f03865f8ddc
+      sha256: f7485523e45a22c468f10ff675ef3605a030526f2f3e99fe153e7e00bc48eacf
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2-dev.5"
+    version: "0.0.3-dev.1"
   html_to_flutter_table:
     dependency: transitive
     description:
       name: html_to_flutter_table
-      sha256: c9066bd18e9d775c21e778c1675d9259683f98f95acc5cca42bbf727d9a8905d
+      sha256: "4953f60d844eb9979e66117e4ab853fa5c29e478bf6b3d8d3fba5c6324baeb84"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.1-dev.7"
-  http:
-    dependency: transitive
-    description:
-      name: http
-      sha256: b9c29a161230ee03d3ccf545097fccd9b87a5264228c5d348202e0f0c28f9010
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.2.2"
-  http_parser:
-    dependency: transitive
-    description:
-      name: http_parser
-      sha256: "2aa08ce0341cc9b354a498388e30986515406668dbcc4f7c950c3e715496693b"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.0.2"
+    version: "0.0.2-dev.1"
   js:
     dependency: transitive
     description:
@@ -356,14 +340,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.2"
-  typed_data:
-    dependency: transitive
-    description:
-      name: typed_data
-      sha256: facc8d6582f16042dd49f2463ff1bd6e2c9ef9f3d5da3d9b087e244a7b564b3c
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.3.2"
   vector_math:
     dependency: transitive
     description:
@@ -380,14 +356,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "14.2.4"
-  web:
-    dependency: transitive
-    description:
-      name: web
-      sha256: d43c1d6b787bf0afad444700ae7f4db8827f701bc61c255ac8d328c6f4d52062
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.0"
 sdks:
   dart: ">=3.5.0 <4.0.0"
   flutter: ">=3.18.0-18.0.pre.54"
