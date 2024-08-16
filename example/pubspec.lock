@@ -164,33 +164,33 @@ packages:
     dependency: transitive
     description:
       name: html_to_flutter
-      sha256: "1a2699adbec8c0f3a1d03aec0cdcef6147c5760eebc90b96586220528cd7aa07"
+      sha256: "6c56b844bfc752b2352b7e5fb603c20adfb957c3d864ef0fd644d3a518a8d2f8"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.2-dev.3"
+    version: "0.2.2-dev.6"
   html_to_flutter_iframe:
     dependency: transitive
     description:
       name: html_to_flutter_iframe
-      sha256: "4684f8972a5dc882bd35c644900cd516aab52ce9d480a67032feb33b81da92d3"
+      sha256: "8b53b074360daa250bb13f36a4d8c599134d354b36a293483f80ea13bcee55f8"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.1-dev.2"
+    version: "0.0.1-dev.4"
   html_to_flutter_kit:
     dependency: "direct main"
     description:
       path: "../packages/html_to_flutter_kit"
       relative: true
     source: path
-    version: "0.0.2-dev.3"
+    version: "0.0.2-dev.5"
   html_to_flutter_table:
     dependency: transitive
     description:
       name: html_to_flutter_table
-      sha256: a1947195d9d047d848244e968b499d4d2a292129b14ff8436e29aca9c2795a33
+      sha256: c9066bd18e9d775c21e778c1675d9259683f98f95acc5cca42bbf727d9a8905d
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.1-dev.5"
+    version: "0.0.1-dev.7"
   js:
     dependency: transitive
     description:
