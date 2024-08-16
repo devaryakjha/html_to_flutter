@@ -12,16 +12,19 @@ final class FigureExtension extends HtmlExtension {
 
   @override
   ParsedResult? parseNode(Node node, HtmlConfig config) {
+    if (!isNodeSupported(node)) return null;
     final children = node.nodes
         .map((e) => ParsedResult.fromNode(e, config))
         .whereNotNull()
         .toList();
     return ParsedResult(
-      style: config.styleOverrides['figure'],
+      style: Style.fromElement(node as HTMLElement, config)
+          .merge(config.styleOverrides['figure']),
       children: children,
       builder: (context) => Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: children.map((e) => e.call(context, config)).toList(),
+        children: children.map((e) => e(context, config)).toList(),
       ),
       source: node,
     );
