@@ -1,7 +1,6 @@
-/// This library is endorsement of the package `widgets_from_html_core`.
+/// This library is endorsement of the package `html_to_flutter`.
 ///
 /// It provides a `TableExtension` class to help building table widgets.
-// ignore_for_file: avoid_print
 library html_to_flutter_table;
 
 import 'dart:math' as math;
