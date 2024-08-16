@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:html_to_flutter_kit/html_to_flutter_kit.dart';
 
@@ -65,6 +67,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Html(
         config: HtmlConfig(
+          onTap: (url, [attributes, element]) {
+            log('Tapped on $url');
+            log('Attributes: $attributes');
+            log('Element: $element');
+          },
           extensions: [
             const TableExtension(),
           ],
@@ -74,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
               <div>
                 <h1>Hello, Flutter!</h1>
                   <p>This is a sample HTML content converted to Flutter widgets.</p>
-                  <p>It supports <strong>bold</strong>, <em>italic</em>, <u>underline</u>, <strike>strike</strike> and <a href="https://flutter.dev">links</a>.</p>
+                  <p>It supports <strong>bold</strong>, <em>italic</em>, <u>underline</u>, <strike>strike</strike> and <a href="https://aryak.dev">links</a>.</p>
                   <p>It supports ordered and unordered lists</p>
                   <ul>
                     <li>Item 1</li>
@@ -88,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     <li>Item 3</li>
                   </ol>
                   <p>It supports images</p>
-                  <span><img src="https://via.assets.so/movie.png?id=1&q=95&w=100&h=100&fit=fill" height="100" /><img src="https://via.assets.so/movie.png?id=2&q=95&w=100&h=100&fit=fill" height="100" /><img src="https://via.assets.so/movie.png?id=3&q=95&w=100&h=100&fit=fill" height="100" /></span>
+                  <span><a href="https://via.assets.so/movie.png?id=1&q=95&w=100&h=100&fit=fill"><img src="https://via.assets.so/movie.png?id=1&q=95&w=100&h=100&fit=fill" height="100" /><a /><img src="https://via.assets.so/movie.png?id=2&q=95&w=100&h=100&fit=fill" height="100" /><img src="https://via.assets.so/movie.png?id=3&q=95&w=100&h=100&fit=fill" height="100" /></span>
                   <p>It supports tables</p>
                   <table>
                     <thead>
