@@ -1,6 +1,6 @@
 name: html_to_flutter_kit
 description: "A complete solution for converting HTML to Flutter widgets."
-version: 0.0.1-dev.5
+version: 0.0.1-dev.6
 homepage: https://aryak.dev/flutter/html_to_flutter
 repository: https://github.com/devaryakjha/html_to_flutter/tree/main/packages/html_to_flutter_kit
 
