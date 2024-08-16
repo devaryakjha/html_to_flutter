@@ -35,4 +35,5 @@ export 'src/parsed_result.dart';
 export 'src/style.dart';
 export 'src/styles/styles.dart';
 export 'src/typedefs.dart';
+export 'src/utils/css_color_parser.dart';
 export 'src/utils/utils.dart';
