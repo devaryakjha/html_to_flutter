@@ -1,3 +1,7 @@
+## 0.0.2-dev.2
+
+- Updated `html_to_flutter` to latest version
+
 ## 0.0.2-dev.1
 
 - Updated `html_to_flutter` to latest version
