@@ -1,3 +1,7 @@
+## 0.0.2-dev.2
+
+- Fixed `html_to_flutter_iframe` was not exported
+
 ## 0.0.2-dev.1
 
 - Added iframe support with `html_to_flutter_iframe`
