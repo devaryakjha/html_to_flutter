@@ -1,3 +1,7 @@
+## 0.0.2-dev.1
+
+- Added iframe support with `html_to_flutter_iframe`
+
 ## 0.0.1-dev.6
 
 - Update `html_to_flutter` to latest version
