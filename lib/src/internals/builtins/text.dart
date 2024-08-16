@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/gestures.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:html_to_flutter/html_to_flutter.dart';
 
 /// A widget that displays a text.
@@ -65,14 +65,17 @@ final class TextExtension extends HtmlExtension {
             })
             .whereNotNull()
             .toList();
-        final combined = TextSpan(children: spans);
+
+        final combined = TextSpan(
+          children: spans,
+          style: style.textStyle,
+        );
+
         if (combined.toPlainText().trim().isEmpty) {
           return const SizedBox.shrink();
         }
-        return Text.rich(
-          TextSpan(children: spans),
-          style: style.textStyle,
-        );
+
+        return Text.rich(combined);
       },
       source: e,
       style: style,
