@@ -1,3 +1,7 @@
+## 0.0.1-dev.6
+
+- Updated `html_to_flutter` to latest version
+
 ## 0.0.1-dev.5
 
 - Added minimal example

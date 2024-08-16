@@ -74,7 +74,7 @@ Add `html_to_flutter_table` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  html_to_flutter_table: ^0.0.1-dev.1
+  html_to_flutter_table: ^latest_version
 ```
 
 Then run `flutter pub get` to install the package.

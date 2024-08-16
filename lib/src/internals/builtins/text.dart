@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
 import 'package:html_to_flutter/html_to_flutter.dart';
 
@@ -49,16 +50,25 @@ final class TextExtension extends HtmlExtension {
   ParsedResult? _fromElement(HTMLElement e, HtmlConfig config) {
     final style =
         Style.fromElement(e, config).merge(config.styleOverrides[e.localName]);
+    final spansEmpty = e.nodes.every((node) {
+      final isEmpty = node.text?.trim().isEmpty ?? false;
+      return isEmpty && node is HTMLText;
+    });
+    if (spansEmpty) return null;
     return ParsedResult(
       builder: (context) {
         final spans = e.nodes
             .map((node) {
-              if (node.text?.trim().isEmpty ?? false) return null;
+              final isEmpty = node.text?.trim().isEmpty ?? false;
+              if (isEmpty && node is HTMLText) return null;
               return _createSpanForNodeRecurssively(node, config, context);
             })
             .whereNotNull()
             .toList();
-
+        final combined = TextSpan(children: spans);
+        if (combined.toPlainText().trim().isEmpty) {
+          return const SizedBox.shrink();
+        }
         return Text.rich(
           TextSpan(children: spans),
           style: style.textStyle,
@@ -72,19 +82,29 @@ final class TextExtension extends HtmlExtension {
   InlineSpan? _createSpanForNodeRecurssively(
     Node node,
     HtmlConfig config,
-    BuildContext context,
-  ) {
+    BuildContext context, [
+    GestureRecognizer? recognizer,
+  ]) {
     if (!isNodeSupported(node)) {
       final result = ParsedResult.fromNode(node, config);
       if (result == null) return null;
+      final widget = result(context, config);
       return WidgetSpan(
-        child: result(context, config),
+        child: recognizer is TapGestureRecognizer
+            ? GestureDetector(
+                onTap: recognizer.onTap,
+                child: widget,
+              )
+            : widget,
         style: result.style.textStyle,
       );
     }
 
     if (node is HTMLText) {
-      return TextSpan(text: node.text);
+      return TextSpan(
+        text: node.text,
+        recognizer: recognizer,
+      );
     }
 
     if (node is HTMLElement) {
@@ -99,9 +119,29 @@ final class TextExtension extends HtmlExtension {
     HtmlConfig config,
     BuildContext context,
   ) {
+    GestureRecognizer? recognizer;
     if (e.localName == 'br') return const TextSpan(text: '\n');
+    if (e.localName == 'a' && e.attributes['href'] != null) {
+      recognizer = TapGestureRecognizer()
+        ..onTap = () {
+          config.onTap?.call(
+            e.attributes['href'],
+            {...e.attributes},
+            e,
+          );
+        };
+    }
     final children = e.nodes
-        .map((node) => _createSpanForNodeRecurssively(node, config, context))
+        .map(
+          (node) {
+            return _createSpanForNodeRecurssively(
+              node,
+              config,
+              context,
+              recognizer,
+            );
+          },
+        )
         .whereNotNull()
         .toList();
     final style =
@@ -109,6 +149,7 @@ final class TextExtension extends HtmlExtension {
     return TextSpan(
       children: children,
       style: style.textStyle,
+      recognizer: children.isEmpty ? recognizer : null,
     );
   }
 

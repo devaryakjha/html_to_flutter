@@ -59,7 +59,9 @@ class _HtmlState extends State<Html> {
   FutureOr<void> _parse() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _parsed = Parser(config: config).parse(data);
-      setState(() {});
+      if (mounted) {
+        setState(() {});
+      }
     });
   }
 

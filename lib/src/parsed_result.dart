@@ -53,20 +53,21 @@ final class ParsedResult {
   /// Can be supplied to the widget returned by [_builder].
   final Key? _widgetKey;
 
-  /// Redirects to [_builder].
-  Widget call(BuildContext context, HtmlConfig config) {
-    if (style.margin != null) {
-      return KeyedSubtree(
-        key: _widgetKey,
-        child: Padding(
-          padding: style.margin!.flatten,
-          child: _builder(context),
-        ),
+  Widget _wrapInPaddingIfChildValid(Widget child) {
+    if (style.margin != null && child is! SizedBox) {
+      return Padding(
+        padding: style.margin!.flatten,
+        child: child,
       );
     }
+    return child;
+  }
+
+  /// Redirects to [_builder].
+  Widget call(BuildContext context, HtmlConfig config) {
     return KeyedSubtree(
       key: _widgetKey,
-      child: _builder(context),
+      child: _wrapInPaddingIfChildValid(_builder(context)),
     );
   }
 }

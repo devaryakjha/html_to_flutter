@@ -6,4 +6,5 @@
 library html_to_flutter_kit;
 
 export 'package:html_to_flutter/html_to_flutter.dart';
+export 'package:html_to_flutter_iframe/html_to_flutter_iframe.dart';
 export 'package:html_to_flutter_table/html_to_flutter_table.dart';
