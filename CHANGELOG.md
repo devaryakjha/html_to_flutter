@@ -1,3 +1,7 @@
+# 0.2.2-dev.4
+
+- Fixed a memory leak issue
+
 # 0.2.2-dev.3
 
 - Fixed empty spans being rendered and taking up spaces.
