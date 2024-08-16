@@ -1,7 +1,9 @@
 # html_to_flutter_table
 
 [![pub package](https://img.shields.io/pub/v/html_to_flutter_table.svg)](https://pub.dev/packages/html_to_flutter_table)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/devaryakjha/html_to_flutter_table/blob/master/LICENSE)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/devaryakjha/html_to_flutter/tree/main/packages/html_to_flutter_table/LICENSE)
+
+An extension package for [`html_to_flutter`](https://pub.dev/packages/html_to_flutter) to add support for `<table>` tag.
 
 `html_to_flutter_table` is a Flutter package that leverages the `flutter_layout_grid` package to render HTML tables. It supports basic tables as well as advanced features like `colspan` and `rowspan`.
 
