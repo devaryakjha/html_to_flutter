@@ -94,7 +94,10 @@ final class TextExtension extends HtmlExtension {
     }
 
     if (node is HTMLText) {
-      return TextSpan(text: node.text, recognizer: recognizer);
+      return TextSpan(
+        text: node.text,
+        recognizer: recognizer,
+      );
     }
 
     if (node is HTMLElement) {
