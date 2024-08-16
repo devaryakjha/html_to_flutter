@@ -1,3 +1,7 @@
+# 0.2.2-dev.6
+
+- Updated `Readme.md`
+
 # 0.2.2-dev.5
 
 - Added topics
