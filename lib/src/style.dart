@@ -1,4 +1,7 @@
-import 'package:flutter/widgets.dart';
+import 'dart:collection';
+
+import 'package:collection/collection.dart';
+import 'package:flutter/material.dart';
 import 'package:html_to_flutter/html_to_flutter.dart';
 
 const Map<String, TextStyle> _defaultTextStyleMap = {
@@ -34,23 +37,64 @@ final class Style {
   const Style({
     this.margin,
     this.padding,
-    this.textStyle,
+    TextStyle? textStyle,
     this.alignment,
     this.width,
     this.height,
     Color? color,
-  }) : _color = color;
+  })  : _textStyle = textStyle,
+        _color = color;
 
   /// Creates a [Style] from an element.
   factory Style.fromElement(HTMLElement element, HtmlConfig config) {
     return Style(
-      margin: _parseSpacing(element.attributes['margin'], config),
-      padding: _parseSpacing(element.attributes['padding'], config),
+      margin: _parseSpacing(
+        _getAttributeValue(element.attributes, 'margin'),
+        config,
+      ),
+      padding: _parseSpacing(
+        _getAttributeValue(element.attributes, 'padding'),
+        config,
+      ),
       textStyle: _defaultTextStyleMap[element.localName],
-      alignment: _parseAlignment(element.attributes['align']),
-      width: _parseDouble(element.attributes['width']),
-      height: _parseDouble(element.attributes['height']),
+      alignment:
+          _parseAlignment(_getAttributeValue(element.attributes, 'align')),
+      width: _parseDouble(_getAttributeValue(element.attributes, 'width')),
+      height: _parseDouble(_getAttributeValue(element.attributes, 'height')),
+      color: _parseCssColor(_getAttributeValue(element.attributes, 'color')),
     );
+  }
+
+  static String? _getAttributeValue(
+    LinkedHashMap<Object, String> attributes,
+    String key,
+  ) {
+    if (attributes.containsKey(key)) return attributes[key];
+    final smallKey = key.toLowerCase();
+    if (attributes.containsKey(key)) return attributes[smallKey];
+    final styles = attributes['style'];
+    if (styles == null) return null;
+    final style = styles.split(';').firstWhereOrNull((s) {
+      final parts = s.split(':');
+      return parts.first.trim().toLowerCase() == key;
+    });
+    if (style == null) return null;
+    return style.split(':').last.trim();
+  }
+
+  /// Parse the given CSS color and change it to a Flutter color.
+  ///
+  /// possible formats:
+  /// - `#RRGGBB`
+  /// - `#AARRGGBB`
+  /// - `rgb(r, g, b)`
+  /// - `rgba(r, g, b, a)`
+  /// - `hsl(h, s%, l%)`
+  /// - `hsla(h, s%, l%, a)`
+  /// - `color_name`
+  static Color? _parseCssColor(String? input) {
+    if (input == null) return null;
+    return const CssColorParser().parse(input);
   }
 
   static double? _parseDouble(String? input) {
@@ -80,7 +124,7 @@ final class Style {
   final Spacing? padding;
 
   /// The text style.
-  final TextStyle? textStyle;
+  final TextStyle? _textStyle;
 
   final Color? _color;
 
@@ -95,8 +139,18 @@ final class Style {
   /// Height for the widget.
   final double? height;
 
+  /// Text style for the widget.
+  TextStyle? get textStyle {
+    return _color != null
+        ? (_textStyle ?? const TextStyle()).copyWith(
+            color: _color,
+            decorationColor: _color,
+          )
+        : _textStyle;
+  }
+
   /// Color for the widget.
-  Color? get color => _color ?? textStyle?.color;
+  Color? get color => _color;
 
   /// Merges this style with another.
   Style merge(Style? other) {
@@ -104,7 +158,7 @@ final class Style {
     return Style(
       margin: other.margin ?? margin,
       padding: other.padding ?? padding,
-      textStyle: other.textStyle ?? textStyle,
+      textStyle: other.textStyle?.merge(textStyle),
       color: other.color ?? color,
       alignment: other.alignment ?? alignment,
       width: other.width ?? width,
