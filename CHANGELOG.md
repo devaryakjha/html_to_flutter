@@ -1,3 +1,7 @@
+## 0.2.2-dev.2
+
+- Fixed image getting downscaled when srcset existed
+
 ## 0.2.2-dev.1
 
 - Added support for `<a>` tag
