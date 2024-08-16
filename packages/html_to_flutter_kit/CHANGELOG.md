@@ -1,3 +1,7 @@
+## 0.0.2-dev.4
+
+- Updated all dependencies to latest versions
+
 ## 0.0.2-dev.3
 
 - Updated `html_to_flutter_iframe` to latest version
