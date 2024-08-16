@@ -1,3 +1,7 @@
+## 0.0.3-dev.2
+
+- Updated all dependencies to latest versions
+
 ## 0.0.3-dev.1
 
 - Updated all dependencies to latest versions
