@@ -1,3 +1,7 @@
+# 0.2.2-dev.5
+
+- Added topics
+
 # 0.2.2-dev.4
 
 - Fixed a memory leak issue
