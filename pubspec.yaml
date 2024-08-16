@@ -1,6 +1,6 @@
 name: html_to_flutter
 description: "A convenience package for rendering HTML content as Flutter widgets."
-version: 0.2.3-dev.2
+version: 0.2.3-dev.3
 homepage: https://aryak.dev/flutter/html_to_flutter
 repository: https://github.com/devaryakjha/html_to_flutter
 topics:

@@ -1,3 +1,7 @@
+# 0.2.3-dev.3
+
+- Fixed: Few columns in table component skipped rendering in case of empty strings
+
 # 0.2.3-dev.2
 
 - Added preview link
