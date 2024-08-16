@@ -11,11 +11,15 @@
 library css_color_parser;
 
 import 'package:flutter/material.dart';
+import 'package:html_to_flutter/src/utils/css_color_names.dart';
 
 /// A parser that parses CSS color values.
 final class CssColorParser {
   /// Creates a new instance of [CssColorParser].
-  const CssColorParser();
+  const CssColorParser(this.input);
+
+  /// Provided input to parse.
+  final String input;
 
   /// Parse the given CSS color and change it to a Flutter color.
   ///
@@ -27,7 +31,7 @@ final class CssColorParser {
   /// - `hsl(h, s%, l%)`
   /// - `hsla(h, s%, l%, a)`
   /// - `color_name`
-  Color? parse(String input) {
+  Color? parse() {
     if (input.startsWith('#')) {
       return _parseHex(input);
     }
@@ -91,41 +95,7 @@ final class CssColorParser {
   }
 
   Color? _parseColorName(String input) {
-    switch (input) {
-      case 'black':
-        return Colors.black;
-      case 'white':
-        return Colors.white;
-      case 'red':
-        return Colors.red;
-      case 'green':
-        return Colors.green;
-      case 'blue':
-        return Colors.blue;
-      case 'yellow':
-        return Colors.yellow;
-      case 'orange':
-        return Colors.orange;
-      case 'purple':
-        return Colors.purple;
-      case 'pink':
-        return Colors.pink;
-      case 'cyan':
-        return Colors.cyan;
-      case 'teal':
-        return Colors.teal;
-      case 'amber':
-        return Colors.amber;
-      case 'brown':
-        return Colors.brown;
-      case 'grey':
-        return Colors.grey;
-      case 'indigo':
-        return Colors.indigo;
-      case 'lime':
-        return Colors.lime;
-      default:
-        return null;
-    }
+    final hexValue = cssColorNameMap[input];
+    return hexValue != null ? _parseHex(hexValue) : null;
   }
 }
