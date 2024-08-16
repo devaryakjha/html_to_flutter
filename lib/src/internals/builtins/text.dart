@@ -51,9 +51,10 @@ final class TextExtension extends HtmlExtension {
     final style =
         Style.fromElement(e, config).merge(config.styleOverrides[e.localName]);
     final spansEmpty = e.nodes.every((node) {
-      final isEmpty = node.text?.trim().isEmpty ?? false;
-      return isEmpty && node is HTMLText;
-    });
+          final isEmpty = node.text?.trim().isEmpty ?? false;
+          return isEmpty && node is HTMLText;
+        }) &&
+        !['td'].contains(e.localName);
     if (spansEmpty) return null;
     return ParsedResult(
       builder: (context) {
