@@ -1,8 +1,15 @@
 name: html_to_flutter_iframe
 description: "An extension to html_to_flutter package to convert iframe tables to flutter widgets."
-version: 0.0.1-dev.3
+version: 0.0.1-dev.4
 homepage: https://aryak.dev/flutter/html_to_flutter
 repository: https://github.com/devaryakjha/html_to_flutter/tree/main/packages/html_to_flutter_iframe
+
+topics:
+  - html
+  - flutter
+  - widget
+  - parser
+  - iframe
 
 environment:
   sdk: ^3.5.0
@@ -12,7 +19,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_inappwebview: ^6.0.0
-  html_to_flutter: ^0.2.2-dev.4
+  html_to_flutter: ^0.2.2-dev.5
 
 dev_dependencies:
   flutter_test:
