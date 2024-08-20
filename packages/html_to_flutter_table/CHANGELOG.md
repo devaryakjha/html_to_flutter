@@ -1,3 +1,8 @@
+## 0.0.2-dev.3
+
+- Updated `html_to_flutter` to latest version
+- Added <img src="https://zerodha.tech/static/images/github-badge.svg" align="center" /></a> badge
+
 ## 0.0.2-dev.2
 
 - Updated `html_to_flutter` to latest version
