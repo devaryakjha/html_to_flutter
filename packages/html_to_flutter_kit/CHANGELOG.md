@@ -1,3 +1,8 @@
+## 0.0.3-dev.3
+
+- Updated all dependencies to latest versions
+- Added <img src="https://zerodha.tech/static/images/github-badge.svg" align="center" /></a> badge
+
 ## 0.0.3-dev.2
 
 - Updated all dependencies to latest versions
