@@ -1,3 +1,5 @@
+<a href="https://zerodha.tech"><img src="https://zerodha.tech/static/images/github-badge.svg" align="right" /></a>
+
 # html_to_flutter_iframe
 
 [![pub package](https://img.shields.io/pub/v/html_to_flutter_iframe.svg)](https://pub.dev/packages/html_to_flutter_iframe)
