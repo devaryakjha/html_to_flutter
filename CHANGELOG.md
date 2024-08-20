@@ -1,3 +1,11 @@
+# 0.2.3-dev.5
+
+- Fixed: `CHANGELOG.md` content
+
+# 0.2.3-dev.4
+
+- Added `Made at ZERODHA.tech` badge
+
 # 0.2.3-dev.3
 
 - Fixed: Few columns in table component skipped rendering in case of empty strings
@@ -30,16 +38,16 @@
 
 - Fixed empty spans being rendered and taking up spaces.
 
-## 0.2.2-dev.2
+# 0.2.2-dev.2
 
 - Fixed image getting downscaled when srcset existed
 
-## 0.2.2-dev.1
+# 0.2.2-dev.1
 
 - Added support for `<a>` tag
 - Fix few text rendering issues
 - Added better exampple
 
-## 0.2.1-dev.1
+# 0.2.1-dev.1
 
-- Re-release with new mechanism
+- Initial release
