@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart' show IterableNullableExtension;
 import 'package:html_to_flutter/html_to_flutter.dart'
-    show HTMLElement, HtmlConfig, NodeList, ParsedResult, parseHtml;
+    show HTMLElement, HtmlConfig, NodeList, ParsedResult, parseHtml, HTMLText;
 import 'package:meta/meta.dart';
 
 /// Parser for HTML content.
@@ -23,7 +23,8 @@ final class Parser {
     if (nodes == null) return [];
 
     final result = nodes
-        .whereType<HTMLElement>()
+        .where((node) =>
+            node is HTMLElement || (node is HTMLText && node.text.isNotEmpty))
         .map((node) => ParsedResult.fromNode(node, config))
         .whereNotNull()
         .toList();
