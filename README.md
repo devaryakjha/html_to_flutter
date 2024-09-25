@@ -9,7 +9,7 @@
 
 ## Live Preview
 
-You can see a live preview of the `html_to_flutter` package in action at [https://www.aryak.dev/flutter/html_to_flutter](https://www.aryak.dev/flutter/html_to_flutter). This demo showcases the capabilities of the package and its extensions.
+You can see a live preview of the `html_to_flutter` package in action at [https://aryakdev.vercel.app/flutter/html_to_flutter](https://aryakdev.vercel.app/flutter/html_to_flutter). This demo showcases the capabilities of the package and its extensions.
 
 ## Features
 
