@@ -1,3 +1,7 @@
+# 0.2.3-dev.7
+
+- Refactor: relaxed Dart version requirement
+
 # 0.2.3-dev.5
 
 - Fixed: `CHANGELOG.md` content

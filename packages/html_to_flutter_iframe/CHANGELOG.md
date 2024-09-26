@@ -1,3 +1,7 @@
+## 0.2.3-dev.7
+
+- Refactor: relaxed Dart version requirement
+
 ## 0.0.2-dev.3
 
 - Updated `html_to_flutter` to latest version

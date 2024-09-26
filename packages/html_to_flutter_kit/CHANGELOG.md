@@ -1,3 +1,7 @@
+## 0.0.3-dev.4
+
+- Refactor: relaxed Dart version requirement
+
 ## 0.0.3-dev.3
 
 - Updated all dependencies to latest versions
