@@ -97,9 +97,9 @@ class _MyHomePageState extends State<MyHomePage> {
         log('Attributes: $attributes');
         log('Element: $element');
       },
-      extensions: [
-        const TableExtension(),
-        const IframeExtextion(),
+      extensions: const [
+        TableExtension(),
+        IframeExtextion(),
       ],
       styleOverrides: {
         'h1': Style(
@@ -220,7 +220,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
-                VerticalDivider(
+                const VerticalDivider(
                   thickness: 5,
                 ),
                 Expanded(
@@ -239,7 +239,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             );
           } else {
-            return Center(
+            return const Center(
               child: Text(
                 'Please rotate your device to landscape mode.'
                 'Or use a device with a larger screen.',

@@ -1,6 +1,6 @@
 name: html_to_flutter
 description: "A convenience package for rendering HTML content as Flutter widgets."
-version: 0.2.3-dev.7
+version: 0.2.3-dev.8
 homepage: https://aryak.dev/flutter/html_to_flutter
 repository: https://github.com/devaryakjha/html_to_flutter
 topics:
@@ -19,8 +19,8 @@ dependencies:
   flutter:
     sdk: flutter
   html: ^0.15.4
-  meta: ^1.15.0
-  nanoid: ^1.0.0
+  meta: any
+  nanoid: any
 
 dev_dependencies:
   flutter_test:
