@@ -42,6 +42,7 @@ final class Style {
     this.width,
     this.height,
     Color? color,
+    this.textWrap = false,
   })  : _textStyle = textStyle,
         _color = color;
 
@@ -138,6 +139,9 @@ final class Style {
 
   /// Height for the widget.
   final double? height;
+
+  /// Wether the underlying text should wrap.
+  final bool textWrap;
 
   /// Text style for the widget.
   TextStyle? get textStyle {

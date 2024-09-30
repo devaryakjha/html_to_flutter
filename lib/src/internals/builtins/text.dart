@@ -76,7 +76,10 @@ final class TextExtension extends HtmlExtension {
           return const SizedBox.shrink();
         }
 
-        return Text.rich(combined);
+        return Text.rich(
+          combined,
+          softWrap: style.textWrap,
+        );
       },
       source: e,
       style: style,
