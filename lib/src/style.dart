@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:collection';
 
 import 'package:collection/collection.dart';
@@ -167,6 +168,28 @@ final class Style {
       alignment: other.alignment ?? alignment,
       width: other.width ?? width,
       height: other.height ?? height,
+    );
+  }
+
+  Style copyWith({
+    Spacing? margin,
+    Spacing? padding,
+    TextStyle? textStyle,
+    Color? color,
+    Alignment? alignment,
+    double? width,
+    double? height,
+    bool? textWrap,
+  }) {
+    return Style(
+      margin: margin ?? this.margin,
+      padding: padding ?? this.padding,
+      textStyle: textStyle ?? _textStyle,
+      color: color ?? _color,
+      alignment: alignment ?? this.alignment,
+      width: width ?? this.width,
+      height: height ?? this.height,
+      textWrap: textWrap ?? this.textWrap,
     );
   }
 }

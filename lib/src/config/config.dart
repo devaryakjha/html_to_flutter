@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:html_to_flutter/html_to_flutter.dart';
@@ -119,5 +120,23 @@ class HtmlConfig {
         ' builtInExtensions: ${_builtInExtensions.map((e) => e.runtimeType)}'
         ' baseFontSize: $baseFontSize'
         ' )';
+  }
+
+  HtmlConfig copyWith({
+    OnLinkTap? onTap,
+    List<HtmlExtension>? extensions,
+    Map<String, Style>? styleOverrides,
+    double? gap,
+    double? baseFontSize,
+    Color? defaultColor,
+  }) {
+    return HtmlConfig(
+      onTap: onTap ?? this.onTap,
+      extensions: extensions ?? this.extensions,
+      styleOverrides: styleOverrides ?? this.styleOverrides,
+      gap: gap ?? this.gap,
+      baseFontSize: baseFontSize ?? this.baseFontSize,
+      defaultColor: defaultColor ?? this.defaultColor,
+    );
   }
 }
