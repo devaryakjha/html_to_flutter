@@ -40,6 +40,7 @@ final class TextExtension extends HtmlExtension {
         return Text(
           input,
           style: style?.textStyle,
+          softWrap: style?.textWrap,
         );
       },
       source: e,

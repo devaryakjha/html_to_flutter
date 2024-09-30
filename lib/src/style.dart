@@ -168,6 +168,7 @@ final class Style {
       alignment: other.alignment ?? alignment,
       width: other.width ?? width,
       height: other.height ?? height,
+      textWrap: other.textWrap ?? textWrap,
     );
   }
 
