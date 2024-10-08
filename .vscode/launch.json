@@ -26,7 +26,7 @@
       "cwd": "example",
       "request": "launch",
       "type": "dart",
-      "args": ["--base-href", "/", "--web-renderer", "html"]
+      "args": ["--web-renderer", "html"]
     },
     {
       "name": "example (profile mode)",
@@ -34,7 +34,7 @@
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile",
-      "args": ["--base-href", "/", "--web-renderer", "html"]
+      "args": ["--web-renderer", "html"]
     },
     {
       "name": "example (release mode)",
