@@ -29,6 +29,7 @@ class Html extends StatefulWidget {
     super.key,
     this.padding = const EdgeInsets.symmetric(horizontal: 16),
     this.renderMode = RenderMode.column,
+    this.shrinkWrap = false,
   });
 
   /// The HTML content to parse.
@@ -44,6 +45,10 @@ class Html extends StatefulWidget {
   ///
   /// default is [RenderMode.column]
   final RenderMode renderMode;
+
+  /// This is passed to the underlying [ListView]
+  /// if [renderMode] is [RenderMode.list].
+  final bool shrinkWrap;
 
   @override
   State<Html> createState() => _HtmlState();
@@ -110,6 +115,7 @@ class _HtmlState extends State<Html> {
   @override
   Widget build(BuildContext context) {
     return HtmlList(
+      shrinkWrap: widget.shrinkWrap,
       renderMode: widget.renderMode,
       key: ObjectKey(data),
       padding: widget.padding,

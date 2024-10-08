@@ -9,6 +9,7 @@ abstract final class HtmlList extends StatelessWidget {
     required HtmlConfig config,
     required EdgeInsets padding,
     required RenderMode renderMode,
+    bool shrinkWrap = false,
     Key? key,
   }) {
     return switch (renderMode) {
@@ -20,6 +21,7 @@ abstract final class HtmlList extends StatelessWidget {
       padding: padding,
       key: key,
       children: children,
+      shrinkWrap: shrinkWrap,
     );
   }
 
@@ -27,6 +29,7 @@ abstract final class HtmlList extends StatelessWidget {
     required this.children,
     required this.config,
     required this.padding,
+    this.shrinkWrap = false,
     super.key,
   });
 
@@ -35,6 +38,8 @@ abstract final class HtmlList extends StatelessWidget {
   final HtmlConfig config;
 
   final EdgeInsets padding;
+
+  final bool shrinkWrap;
 
   @override
   Widget build(BuildContext context);
@@ -45,6 +50,7 @@ final class _HtmlColumn extends HtmlList {
     required super.children,
     required super.config,
     required super.padding,
+    super.shrinkWrap = false,
     super.key,
   }) : super._();
 
@@ -65,12 +71,14 @@ final class _HtmlList extends HtmlList {
     required super.children,
     required super.config,
     required super.padding,
+    super.shrinkWrap = false,
     super.key,
   }) : super._();
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      shrinkWrap: shrinkWrap,
       padding: padding,
       itemBuilder: (context, index) => children[index],
       itemCount: children.length,
@@ -84,6 +92,7 @@ final class _HtmlSliverList extends HtmlList {
     required super.children,
     required super.config,
     required super.padding,
+    super.shrinkWrap = false,
     super.key,
   }) : super._();
 

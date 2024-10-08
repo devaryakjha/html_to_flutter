@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:collection';
 
 import 'package:collection/collection.dart';
@@ -42,6 +43,7 @@ final class Style {
     this.width,
     this.height,
     Color? color,
+    this.textWrap,
   })  : _textStyle = textStyle,
         _color = color;
 
@@ -139,6 +141,9 @@ final class Style {
   /// Height for the widget.
   final double? height;
 
+  /// Wether the underlying text should wrap.
+  final bool? textWrap;
+
   /// Text style for the widget.
   TextStyle? get textStyle {
     return _color != null
@@ -163,6 +168,29 @@ final class Style {
       alignment: other.alignment ?? alignment,
       width: other.width ?? width,
       height: other.height ?? height,
+      textWrap: other.textWrap ?? textWrap,
+    );
+  }
+
+  Style copyWith({
+    Spacing? margin,
+    Spacing? padding,
+    TextStyle? textStyle,
+    Color? color,
+    Alignment? alignment,
+    double? width,
+    double? height,
+    bool? textWrap,
+  }) {
+    return Style(
+      margin: margin ?? this.margin,
+      padding: padding ?? this.padding,
+      textStyle: textStyle ?? _textStyle,
+      color: color ?? _color,
+      alignment: alignment ?? this.alignment,
+      width: width ?? this.width,
+      height: height ?? this.height,
+      textWrap: textWrap ?? this.textWrap,
     );
   }
 }
