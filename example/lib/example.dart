@@ -53,6 +53,7 @@ class _ExampleState extends State<Example> {
                         TextFormField(
                           initialValue: _input,
                           onChanged: debouncer.call,
+                          maxLines: 1000,
                         ),
                       ],
                     ),

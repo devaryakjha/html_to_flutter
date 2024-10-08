@@ -14,7 +14,8 @@ final htmlConfig = HtmlConfig(
     TagExtension(
       supportedTags: const {'zerodha'},
       builder: (context) => const CustomPaint(
-        painter: ZerodhaLogo(),
+        size: Size(100, 100),
+        foregroundPainter: ZerodhaLogo(),
       ),
     ),
   ],
@@ -109,7 +110,7 @@ const defaultInput = """
                 </tbody>
               </table>
               <p>It supports custom tags:</p>
-              <zerodha />
+              <zerodha></zerodha>
               <p>It supports iframes:</p>
-              <iframe src="https://zerodha.tech/projects" width="100%" height="300"></iframe>
+              <iframe src="https://zerodha.tech/projects" width="100%" height="300" />
             </div>""";
