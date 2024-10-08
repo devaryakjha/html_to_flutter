@@ -41,12 +41,13 @@ class _MyHomePageState extends State<MyHomePage> {
               <h1 color="red">Hello, Flutter!</h1>
               <p>This is a sample HTML content converted to Flutter widgets.</p>
               <p>It supports <strong>bold</strong>, <em>italic</em>, <u>underline</u>, <strike>strike</strike>, and <a href="https://flutter.dev">links</a>.</p>
-              <p>It supports ordered and unordered lists:</p>
+              <p>It supports unordered lists:</p>
               <ul>
                 <li color="#ff0000">Item 1</li>
                 <li color="hsl(0, 100%, 50%)">Item 2</li>
                 <li color="rgb(255,0,0)">Item 3</li>
               </ul>
+             <p>and ordered lists:</p>
               <ol>
                 <li style="color:">Item 1</li>
                 <li>Item 2</li>
@@ -54,9 +55,9 @@ class _MyHomePageState extends State<MyHomePage> {
               </ol>
               <p>It supports images:</p>
               <span>
-                <img src="https://via.placeholder.com/100" height="100" />
-                <img src="https://via.placeholder.com/100" height="100" />
-                <img src="https://via.placeholder.com/100" height="100" />
+                <img src="https://picsum.photos/seed/abc/200?grayscale" margin="0 16px 0 0" />
+                <img src="https://picsum.photos/seed/def/200" margin="0 16px 0 0" />
+                <img src="https://picsum.photos/seed/ghi/200" margin="0 16px 0 0" />
               </span>
               <p>It supports tables:</p>
               <table>
@@ -141,52 +142,6 @@ class _MyHomePageState extends State<MyHomePage> {
       },
     );
     return Scaffold(
-      // body: Row(
-      //   children: [
-      //     Expanded(
-      //       child: SingleChildScrollView(
-      //         child: Column(
-      //           crossAxisAlignment: CrossAxisAlignment.start,
-      //           children: [
-      //             const Padding(
-      //               padding: EdgeInsets.all(8.0),
-      //               child: Text(
-      //                 'Enter HTML content below:',
-      //               ),
-      //             ),
-      //             TextFormField(
-      //               initialValue: _input,
-      //               onChanged: (value) {
-      //                 _input = value;
-      //                 if (mounted) setState(() {});
-      //               },
-      //               maxLines: 100,
-      //               decoration: const InputDecoration(
-      //                 hintText: 'Enter HTML here',
-      //               ),
-      //             ),
-      //           ],
-      //         ),
-      //       ),
-      //     ),
-      //     VerticalDivider(
-      //       thickness: 5,
-      //     ),
-      //     Expanded(
-      //       child: Column(
-      //         children: [
-      //           Expanded(
-      //             child: Html(
-      //               config: htmlConfig,
-      //               renderMode: RenderMode.list,
-      //               data: _input,
-      //             ),
-      //           ),
-      //         ],
-      //       ),
-      //     ),
-      //   ],
-      // ),
       body: LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth > 600) {
